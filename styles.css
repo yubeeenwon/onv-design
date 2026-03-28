@@ -416,6 +416,8 @@ nav a:hover {
   opacity: 1.00;
 }
 
+
+
 .card-center {
   position: absolute;
   top: 50%; left: 50%;
@@ -423,7 +425,7 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 48px;
+  gap: 40px;
   z-index: 5;
 }
 
@@ -1400,24 +1402,24 @@ nav a:hover {
 .brand-hero-text .brand-body {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) 0.3s,
-              transform 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) 0.3s,
-              -webkit-mask-image 0s;
+  transition: opacity 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) 0.5s,
+              transform 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) 0.5s;
   -webkit-mask-image: none;
   mask-image: none;
 }
 
 .page-panel.active .brand-hero-text .brand-body {
-  opacity: 0.25;
+  opacity: 0.12;
   transform: translateY(0);
 }
 
 .brand-hero-text .brand-body.spotlight-ready {
+  transition: opacity 0.8s ease;
   -webkit-mask-image: radial-gradient(circle 150px at var(--mx, 50%) var(--my, 50%), rgba(0,0,0,1) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%);
   mask-image: radial-gradient(circle 150px at var(--mx, 50%) var(--my, 50%), rgba(0,0,0,1) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%);
 }
 
-.page-panel.active .brand-hero-text:hover .brand-body.spotlight-ready {
+.brand-hero-text:hover .brand-body.spotlight-ready {
   opacity: 0.9;
 }
 

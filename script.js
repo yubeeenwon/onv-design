@@ -589,10 +589,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const navEl = e.target.closest('[data-nav="brand"]');
       if (navEl) {
         brandBody.classList.remove('spotlight-ready');
+        brandBody.style.opacity = '';
         clearTimeout(spotlightTimer);
         spotlightTimer = setTimeout(() => {
           brandBody.classList.add('spotlight-ready');
-        }, 1500);
+        }, 2000);
       }
     });
 
