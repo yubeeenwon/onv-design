@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONV — Recycled Metal Furniture</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+
+
+  <!-- ===== LOADING ===== -->
+  <div id="loading-screen">
+    <div class="load-line-h" id="loadLine"></div>
+    <div class="load-curtain-left"></div>
+    <div class="load-curtain-right"></div>
+  </div>
+
+  <!-- ===== HEADER (항상 고정) ===== -->
+  <header id="main-header" class="header-hidden">
+    <a href="#" class="logo" data-nav="home">
+      <img src="img_source/logo.png" alt="ONV">
+    </a>
+    <nav>
+      <a href="#" data-nav="shop">Shop</a>
+      <a href="#" data-nav="brand">Brand</a>
+      <a href="#" data-nav="contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ===== HOME (베이스 레이어) ===== -->
+  <div id="home" class="page-base">
+
+    <!-- HERO: 풀스크린 이미지 → 스크롤 시 카드로 축소 -->
+    <div id="hero-pin" style="height: 400vh;">
+      <div id="hero-sticky">
+        <div id="hero-image-wrap">
+          <img src="img_shop/main.png" alt="ONV Signature" id="hero-image">
+          <div id="hero-overlay"></div>
+
+          <!-- 카드 텍스트: METAL / CIRCULATION 가운데 -->
+          <div id="card-content">
+            <div class="card-center">
+              <div class="keyword-hover" data-float="metalFloat">
+                <img src="img_source/keyword/layer-2.png" alt="METAL" class="card-kw-img" style="filter: invert(1) brightness(8) grayscale(100%);">
+              </div>
+              <span class="circle-divider"></span>
+              <div class="keyword-hover" data-float="circFloat">
+                <img src="img_source/keyword/layer-1.png" alt="CIRCULATION" class="card-kw-img" style="filter: invert(1) brightness(8) grayscale(100%);">
+              </div>
+            </div>
+            <div class="hero-float-img" id="metalFloat">
+              <img src="float_metal.png" alt="">
+            </div>
+            <div class="hero-float-img" id="circFloat">
+              <img src="float_circulation.png" alt="">
+            </div>
+          </div>
+        </div>
+        <!-- 히어로 텍스트: 풀스크린일 때만 보임 -->
+        <div id="hero-content">
+          <img src="img_source/text_01.png" alt="Recycled Metal Only Adds Depth" class="hero-text-img hero-text-tl" style="filter: invert(1) brightness(5) grayscale(100%);">
+          <img src="img_source/text_02.png" alt="To Your Space Into Furniture" class="hero-text-img hero-text-br" style="filter: invert(1) brightness(5) grayscale(100%);">
+        </div>
+      </div>
+    </div>
+
+    <div class="divider-line"></div>
+
+    <!-- BRAND INTRO -->
+    <section class="home-section home-intro fade-in bg-section bg-texture">
+
+
+      <p class="home-intro-text-en" style="margin-top: 8px;">
+        The refined beauty of metal meets genuine environmental consciousness.
+      </p>
+      <a href="#" class="home-link" data-nav="brand">Discover More →</a>
+    </section>
+
+    <!-- WORD CLOUD — 키워드 흩어짐 -->
+    <section class="home-section">
+      <div class="word-scatter">
+        <span class="scatter-word" style="--x: 5%; --y: 10%; --size: 2.6rem; --delay: 0; --z: 100px; --float-duration: 5.5s;">recycled</span>
+        <span class="scatter-word" style="--x: 55%; --y: 5%; --size: 0.95rem; --delay: 1; --z: -80px; --float-duration: 7s;">metal</span>
+        <span class="scatter-word" style="--x: 25%; --y: 45%; --size: 3.5rem; --delay: 2; --z: 150px; --float-duration: 6s;">furniture</span>
+        <span class="scatter-word" style="--x: 70%; --y: 35%; --size: 1.4rem; --delay: 3; --z: 20px; --float-duration: 8s;">sustainability</span>
+        <span class="scatter-word" style="--x: 10%; --y: 75%; --size: 0.85rem; --delay: 4; --z: -100px; --float-duration: 5s;">upcycling</span>
+        <span class="scatter-word" style="--x: 60%; --y: 70%; --size: 2rem; --delay: 5; --z: 80px; --float-duration: 7.5s;">design</span>
+        <span class="scatter-word" style="--x: 40%; --y: 20%; --size: 0.7rem; --delay: 6; --z: -160px; --float-duration: 6.5s;">steel</span>
+        <span class="scatter-word" style="--x: 80%; --y: 55%; --size: 1.1rem; --delay: 7; --z: -40px; --float-duration: 5.8s;">copper</span>
+        <span class="scatter-word" style="--x: 15%; --y: 55%; --size: 0.75rem; --delay: 8; --z: -140px; --float-duration: 7.2s;">aluminum</span>
+        <span class="scatter-word" style="--x: 48%; --y: 85%; --size: 1.6rem; --delay: 9; --z: 40px; --float-duration: 6.8s;">connection</span>
+        <span class="scatter-word" style="--x: 85%; --y: 15%; --size: 0.65rem; --delay: 10; --z: -180px; --float-duration: 8.5s;">environment</span>
+        <span class="scatter-word" style="--x: 35%; --y: 65%; --size: 0.8rem; --delay: 11; --z: -120px; --float-duration: 5.2s;">depth</span>
+      </div>
+    </section>
+
+    <!-- CORE VALUES — 3등분 풀스크린 -->
+    <section class="cv-section" id="cvSection">
+      <h2 class="cv-title">Core Value</h2>
+      <div class="cv-grid">
+        <div class="cv-col cv-col-1">
+          <span class="cv-number">01</span>
+          <img src="img_source/text_value/value_01.png" alt="Environment" class="cv-keyword-img" style="filter: invert(1) brightness(5) grayscale(100%);">
+          <p class="cv-desc">Sustainable cycles through the rebirth of discarded materials.</p>
+        </div>
+        <div class="cv-line cv-line-1"><div class="cv-line-inner"></div></div>
+        <div class="cv-col cv-col-2">
+          <span class="cv-number">02</span>
+          <img src="img_source/text_value/value_02.png" alt="Connection" class="cv-keyword-img" style="filter: invert(1) brightness(5) grayscale(100%);">
+          <p class="cv-desc">Where past materials meet present design.</p>
+        </div>
+        <div class="cv-line cv-line-2"><div class="cv-line-inner"></div></div>
+        <div class="cv-col cv-col-3">
+          <span class="cv-number">03</span>
+          <img src="img_source/text_value/value_03.png" alt="Metal" class="cv-keyword-img" style="filter: invert(1) brightness(5) grayscale(100%);">
+          <p class="cv-desc">The refined beauty of raw metallic surfaces.</p>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- 마키 텍스트 -->
+
+
+    <!-- PRODUCT HIGHLIGHTS -->
+    <section class="home-section home-highlights fade-in">
+      <h2 class="home-section-title">Selected Works</h2>
+      <div class="home-highlights-grid">
+        <div class="highlight-item" data-shop-category="cat-table">
+          <img src="img_shop/table_04.png" alt="Table">
+          <span class="highlight-label">Table</span>
+        </div>
+        <div class="highlight-item" data-shop-category="cat-light">
+          <img src="img_shop/light_03.png" alt="Light">
+          <span class="highlight-label">Light</span>
+        </div>
+        <div class="highlight-item" data-shop-category="cat-shelves">
+          <img src="img_shop/shelves_01.png" alt="Shelves">
+          <span class="highlight-label">Shelves</span>
+        </div>
+      </div>
+      <a href="#" class="btn-view-all" data-nav="shop">View All Products</a>
+    </section>
+
+    <!-- 숫자 카운터 섹션 -->
+
+
+    <!-- PROCESS -->
+    <section class="home-section home-process fade-in bg-section bg-process">
+      <h2 class="home-section-title">The Process</h2>
+      <p class="home-intro-text-en process-desc">
+        We collect discarded metals, transforming them into new forms of furniture through cleaning, cutting, and processing. Through the circulation of metal materials, we find balance between environmental value and design.
+      </p>
+    </section>
+
+    <!-- NAV CARDS -->
+
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-watermark"><img src="img_source/logo.png" alt="ONV"></div>
+      <div class="footer-bottom">
+        <span class="footer-copyright">© 2025 ONV. All rights reserved.</span>
+        <div class="footer-nav">
+          <a href="#" data-nav="shop">Shop</a>
+          <a href="#" data-nav="brand">Brand</a>
+          <a href="#" data-nav="contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ===== OVERLAY (홈 어두워지는 효과) ===== -->
+  <div id="page-overlay"></div>
+
+  <!-- ===== SHOP PANEL ===== -->
+  <div id="shop" class="page-panel">
+    <div class="panel-content light-panel">
+
+      <section class="panel-hero">
+        <img src="img_shop/main.png" alt="ONV Featured">
+      </section>
+
+      <section class="shop-section">
+        <div class="section-header">
+          <h2 class="section-title dark-text">Shop</h2>
+          <div class="section-meta dark-text">
+            <span>Material — Metal, Steel, Aluminum, Copper</span>
+            <span>Year — 2025</span>
+          </div>
+        </div>
+
+        <!-- CHAIRS -->
+        <div class="category-label fade-in" id="cat-chair">Chair</div>
+        <div class="product-grid fade-in">
+          <div class="product-card">
+            <img src="img_shop/chair_01.png" alt="Arc Slatback" class="product-img-default">
+            <img src="img_shop/chair_01-2.png" alt="" class="product-img-hover">
+            <span class="product-name">Arc Slatback</span>
+          </div>
+          <div class="product-card">
+            <img src="img_shop/chair_02.png" alt="Tri Stool" class="product-img-default">
+            <img src="img_shop/chair_02-2.jpg" alt="" class="product-img-hover">
+            <span class="product-name">Tri Stool</span>
+          </div>
+          <div class="product-card">
+            <img src="img_shop/chair_03.png" alt="Grid Frame" class="product-img-default">
+            <img src="img_shop/chair_03-2.jpg" alt="" class="product-img-hover">
+            <span class="product-name">Grid Frame</span>
+          </div>
+          <div class="product-card">
+            <img src="img_shop/chair_04.png" alt="Fold Lite" class="product-img-default">
+            <img src="img_shop/chair_04-2.jpg" alt="" class="product-img-hover">
+            <span class="product-name">Fold Lite</span>
+          </div>
+          <div class="product-card">
+            <img src="img_shop/chair_05.png" alt="Loop Lounge" class="product-img-default">
+            <img src="img_shop/chair_05-4.jpg" alt="" class="product-img-hover">
+            <span class="product-name">Loop Lounge</span>
+          </div>
+        </div>
+
+        <!-- TABLES -->
+        <div class="category-label fade-in" id="cat-table">Table</div>
+        <div class="product-grid fade-in">
+          <div class="product-card">
+            <img src="img_shop/table_01.png" alt="Gear Lift" class="product-img-default">
+            <span class="product-name">Gear Lift</span>
+          </div>
+          <div class="product-card">
+            <img src="img_shop/table_02.png" alt="Pivot Round" class="product-img-default">
+            <span class="product-name">Pivot Round</span>
+          </div>
+          <div class="product-card">
+            <img src="img_shop/table_03.png" alt="Slab Console" class="product-img-default">
+            <span class="product-name">Slab Console</span>
+          </div>
+          <div class="product-card">
+            <img src="img_shop/table_04.png" alt="Cog Vitrine" class="product-img-default">
+            <span class="product-name">Cog Vitrine</span>
+          </div>
+        </div>
+
+        <!-- LIGHTS -->
+        <div class="category-label fade-in" id="cat-light">Light</div>
+        <div class="product-grid fade-in">
+          <div class="product-card">
+            <img src="img_shop/light_01.png" alt="Bend Arc" class="product-img-default">
+            <span class="product-name">Bend Arc</span>
+          </div>
+          <div class="product-card">
+            <img src="img_shop/light_02.png" alt="Dome Glow" class="product-img-default">
+            <span class="product-name">Dome Glow</span>
+          </div>
+          <div class="product-card">
+            <img src="img_shop/light_03.png" alt="Joint Arm" class="product-img-default">
+            <span class="product-name">Joint Arm</span>
+          </div>
+          <div class="product-card">
+            <img src="img_shop/light_04.png" alt="Forge Pendant" class="product-img-default">
+            <span class="product-name">Forge Pendant</span>
+          </div>
+        </div>
+
+        <!-- DRAWERS -->
+        <div class="category-label fade-in" id="cat-drawer">Drawer</div>
+        <div class="product-grid fade-in">
+          <div class="product-card">
+            <img src="img_shop/drawer_01.png" alt="Mix Module" class="product-img-default">
+            <img src="img_shop/drawer_01-2.png" alt="" class="product-img-hover">
+            <span class="product-name">Mix Module</span>
+          </div>
+          <div class="product-card">
+            <img src="img_shop/drawer_02.png" alt="File Compact" class="product-img-default">
+            <span class="product-name">File Compact</span>
+          </div>
+          <div class="product-card">
+            <img src="img_shop/drawer_03.png" alt="Wide Matte" class="product-img-default">
+            <span class="product-name">Wide Matte</span>
+          </div>
+        </div>
+
+        <!-- SHELVES -->
+        <div class="category-label fade-in" id="cat-shelves">Shelves</div>
+        <div class="product-grid fade-in">
+          <div class="product-card">
+            <img src="img_shop/shelves_01.png" alt="Grid Shelf" class="product-img-default">
+            <span class="product-name">Grid Shelf</span>
+          </div>
+          <div class="product-card">
+            <img src="img_shop/shelves_02.png" alt="Asym Wall" class="product-img-default">
+            <span class="product-name">Asym Wall</span>
+          </div>
+          <div class="product-card">
+            <img src="img_shop/shelves_03.png" alt="Rod Bookcase" class="product-img-default">
+            <span class="product-name">Rod Bookcase</span>
+          </div>
+        </div>
+
+        <!-- DISPLAY CABINET -->
+        <div class="category-label fade-in" id="cat-display">Display Cabinet</div>
+        <div class="product-grid fade-in">
+          <div class="product-card">
+            <img src="img_shop/displaycabinet_01.png" alt="Display Cabinet" class="product-img-default">
+            <span class="product-name">Glass Vault</span>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="footer-watermark"><img src="img_source/logo.png" alt="ONV"></div>
+        <div class="footer-bottom">
+          <span class="footer-copyright">© 2025 ONV. All rights reserved.</span>
+          <div class="footer-nav">
+            <a href="#" data-nav="shop">Shop</a>
+            <a href="#" data-nav="brand">Brand</a>
+            <a href="#" data-nav="contact">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ===== BRAND PANEL ===== -->
+  <div id="brand" class="page-panel">
+    <div class="panel-content">
+
+      <!-- 한글 텍스트만 (배경 검정) -->
+      <section class="brand-hero-text">
+        <p class="brand-body">
+          재생된 금속이 지닌 고유의 물성을 담아낸 가구 브랜드 ONV는 지속가능성과 메탈릭 감각이 공존하는 새로운 가구를 제안합니다. 금속 본연의 질감과 빛을 간직하여 절제된 형태, 그리고 금속 소재의 순환을 통해 환경적 가치와 디자인의 균형을 찾습니다.
+        </p>
+      </section>
+
+      <!-- 스크롤 시 작업 공간 이미지 등장 -->
+      <section class="brand-workspace-img fade-in">
+        <img src="bg_brand_hero.jpg" alt="Workspace">
+      </section>
+
+      <!-- CORE VALUE: 가로 스크롤 섹션 -->
+      <div class="hscroll-wrap" id="coreValueWrap">
+        <div class="hscroll-track" id="coreValueTrack">
+          <div class="hscroll-panel">
+            <div class="hscroll-panel-inner">
+              <span class="hscroll-number">01</span>
+              <img src="img_source/text_value/value_01.png" alt="Environment" class="value-title-img" style="filter: invert(1) brightness(5) grayscale(100%); height: auto; width: auto; max-height: 28px; margin-bottom: 24px;">
+              <p class="hscroll-body">버려진 금속이 새로운 가구로 탄생하는 과정을 통해 자원의 순환과 환경적 가치를 실현합니다. 철강, 스틸, 알루미늄, 구리 등 다양한 금속을 수집하고 세척, 절단, 가공하여 지속가능한 디자인을 완성합니다.</p>
+            </div>
+          </div>
+          <div class="hscroll-panel">
+            <div class="hscroll-panel-inner">
+              <span class="hscroll-number">02</span>
+              <img src="img_source/text_value/value_02.png" alt="Connection" class="value-title-img" style="filter: invert(1) brightness(5) grayscale(100%); height: auto; width: auto; max-height: 28px; margin-bottom: 24px;">
+              <p class="hscroll-body">부드러운 곡선의 흐름과 정확한 직선의 끝맺음이 만나 ONV가 전하고자 하는 연결의 의미를 담아냅니다. 과거의 소재와 현재의 디자인, 환경과 일상이 연결됩니다.</p>
+            </div>
+          </div>
+          <div class="hscroll-panel">
+            <div class="hscroll-panel-inner">
+              <span class="hscroll-number">03</span>
+              <img src="img_source/text_value/value_03.png" alt="Metal" class="value-title-img" style="filter: invert(1) brightness(5) grayscale(100%); height: auto; width: auto; max-height: 28px; margin-bottom: 24px;">
+              <p class="hscroll-body">금속 본연의 정제된 아름다움을 담아냅니다. 차갑게 빛나는 금속의 표면, 강도와 내구성이 뛰어난 물성이 ONV 가구의 핵심 소재이자 아이덴티티입니다.</p>
+            </div>
+          </div>
+        </div>
+        <!-- 인디케이터 -->
+        <div class="hscroll-indicators" id="coreValueDots">
+          <span class="hscroll-dot active"></span>
+          <span class="hscroll-dot"></span>
+          <span class="hscroll-dot"></span>
+        </div>
+        <!-- 섹션 타이틀 -->
+        <div class="hscroll-label">Core Value</div>
+      </div>
+
+      <section class="fade-in" style="padding: 80px 48px 120px;">
+        <div class="section-header">
+          <h2 class="section-title">Design Concept</h2>
+        </div>
+        <div style="max-width: 640px;">
+          <p class="brand-body">
+            부드러운 곡선의 흐름과 정확한 직선의 끝맺음이 만나 ONV가 전하고자 하는 연결의 의미를 담아냅니다. 브랜드의 유연함은 금속의 직선성과 업사이클링에서 비롯된 유기적인 곡선을 조합하여 조형적 아이덴티티를 표현합니다.
+          </p>
+          <p class="brand-body" style="opacity: 0.4; font-size: 0.8rem;">
+            The interplay between flowing curves and precise linear endpoints embodies the essence of connection that ONV seeks to convey.
+          </p>
+        </div>
+      </section>
+
+      <footer>
+        <div class="footer-watermark"><img src="img_source/logo.png" alt="ONV"></div>
+        <div class="footer-bottom">
+          <span class="footer-copyright">© 2025 ONV. All rights reserved.</span>
+          <div class="footer-nav">
+            <a href="#" data-nav="shop">Shop</a>
+            <a href="#" data-nav="brand">Brand</a>
+            <a href="#" data-nav="contact">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ===== CONTACT PANEL ===== -->
+  <div id="contact" class="page-panel">
+    <div class="panel-content">
+
+      <div class="contact-content">
+        <h1 class="contact-title">Contact</h1>
+        <hr class="contact-divider">
+
+        <div class="contact-section fade-in">
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:info@onv.design">info@onv.design</a></div>
+        </div>
+
+        <div class="contact-section fade-in">
+          <div class="contact-label">Press & Media</div>
+          <div class="contact-value"><a href="mailto:press@onv.design">press@onv.design</a></div>
+        </div>
+
+        <div class="contact-section fade-in">
+          <div class="contact-label">Address</div>
+          <div class="contact-value">123, Teheran-ro, Gangnam-gu,<br>Seoul, Republic of Korea</div>
+        </div>
+
+        <div class="contact-section fade-in">
+          <div class="contact-label">Working Hours</div>
+          <div class="contact-value">Mon — Fri / 10:00 — 18:00 (KST)<br>Sat, Sun, Hol / Closed</div>
+        </div>
+
+        <div class="contact-section fade-in">
+          <div class="contact-label">Socials</div>
+          <div class="contact-value"><a href="#">@onv_official</a></div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="footer-watermark"><img src="img_source/logo.png" alt="ONV"></div>
+        <div class="footer-bottom">
+          <span class="footer-copyright">© 2025 ONV. All rights reserved.</span>
+          <div class="footer-nav">
+            <a href="#" data-nav="shop">Shop</a>
+            <a href="#" data-nav="brand">Brand</a>
+            <a href="#" data-nav="contact">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAIL MODAL -->
+  <div class="product-modal-overlay" id="product-modal">
+    <div class="product-modal">
+      <button class="modal-close" id="modal-close">✕</button>
+      <div class="modal-image">
+        <img id="modal-img" src="" alt="">
+      </div>
+      <div class="modal-info">
+        <span class="modal-category" id="modal-category"></span>
+        <h2 class="modal-name" id="modal-name"></h2>
+        <p class="modal-desc" id="modal-desc"></p>
+        <div class="modal-specs" id="modal-specs"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cursor-circle"></div>
+  <script src="script.js"></script>
+</body>
+</html>
