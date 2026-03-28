@@ -400,9 +400,17 @@ nav a:hover {
   pointer-events: none;
 }
 
+.card-kw-text {
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  opacity: 0.95;
+  line-height: 1;
+}
+
 .card-kw-img {
-  height: clamp(40px, 8vw, 80px);
-  width: auto;
+  width: clamp(120px, 35vw, 400px);
+  height: auto;
   object-fit: contain;
   opacity: 1.00;
 }
@@ -595,6 +603,23 @@ nav a:hover {
   max-width: 100%;
 }
 
+.intro-highlight {
+  background: transparent;
+  padding: clamp(24px, 4vw, 48px) 0;
+  margin: 24px 0;
+  display: inline-block;
+}
+
+.intro-highlight-text {
+  font-size: 1.01rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #202020;
+  max-width: 640px;
+  opacity: 1;
+  margin: 0;
+}
+
 .hscroll-body,
 .brand-body,
 .home-intro-text-en {
@@ -667,7 +692,7 @@ nav a:hover {
 
 .cv-number {
   font-size: clamp(0.65rem, 0.9vw, 0.8rem);
-  font-weight: 400;
+  font-weight: 500;
   opacity: 0.20;
   letter-spacing: -0.05em;
   margin-bottom: clamp(20px, 3vh, 32px);
@@ -839,7 +864,7 @@ nav a:hover {
 
 .value-number {
   font-size: clamp(0.7rem, 1vw, 0.85rem);
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.05em;
   display: block;
   margin-bottom: clamp(20px, 3vw, 36px);
@@ -988,7 +1013,9 @@ nav a:hover {
 }
 
 .process-desc {
-  max-width: 640px !important;
+  max-width: 100% !important;
+  padding-left: 5vw;
+  padding-right: 5vw;
 }
 
 /* Process */
@@ -1001,7 +1028,7 @@ nav a:hover {
 }
 
 .home-process .home-section-title,
-.home-process .home-intro-text {
+.home-process .home-intro-text-en {
   padding-left: 5vw;
   padding-right: 5vw;
   max-width: 700px;
@@ -1149,7 +1176,7 @@ nav a:hover {
 }
 
 .category-label {
-  font-size: 0.65rem;
+  font-size: 0.85rem;
   font-weight: 300;
   letter-spacing: -0.05em;
   text-transform: uppercase;
@@ -1348,12 +1375,12 @@ nav a:hover {
 .brand-workspace-img {
   padding: 0;
   overflow: hidden;
-  height: 60vh;
+  height: 75vh;
 }
 
 .brand-workspace-img img {
   width: 100%;
-  height: 80vh;
+  height: 95vh;
   object-fit: cover;
   object-position: center 30%;
   filter: grayscale(100%);
@@ -1421,7 +1448,7 @@ nav a:hover {
 
 .hscroll-number {
   font-size: 0.55rem;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.05em;
   opacity: 0.33;
   margin-bottom: 28px;
@@ -1430,7 +1457,7 @@ nav a:hover {
 .hscroll-body {
   font-size: 0.88rem;
   font-weight: 300;
-  line-height: 2.2;
+  line-height: 1.6;
   opacity: 0.65;
   max-width: 480px;
   word-break: keep-all;
@@ -1504,7 +1531,7 @@ nav a:hover {
   font-weight: 400;
   letter-spacing: -0.05em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.55);
   margin-bottom: 28px;
 }
 
@@ -1524,7 +1551,7 @@ nav a:hover {
   font-weight: 400;
   letter-spacing: -0.05em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.55);
   margin-bottom: 10px;
 }
 
@@ -1796,9 +1823,11 @@ footer {
 /* ===== WORD SCATTER (키워드 흩어짐) ===== */
 .word-scatter {
   position: relative;
-  height: 400px;
+  height: clamp(500px, 80vh, 700px);
   width: 100%;
+  padding: 0 5vw;
   perspective: 800px;
+  overflow: hidden;
 }
 
 .scatter-word {
@@ -2120,23 +2149,57 @@ footer {
 @media (max-width: 1024px) {
   .product-grid { grid-template-columns: repeat(2, 1fr); }
   .home-highlights-grid { grid-template-columns: repeat(2, 1fr); }
-  .word-scatter { height: 300px; }
-  .stats-grid { gap: 32px; }
+  .word-scatter { height: 450px; }
 }
 
 @media (max-width: 768px) {
-  nav { gap: 20px; }
-  nav a { font-size: 0.55rem; }
+  /* 헤더 */
+  header { padding: 16px 5vw; }
+  nav { gap: 16px; }
+  nav a { font-size: 0.6rem; }
+  .logo img { height: 22px; }
+
+  /* 워드클라우드: 작은 화면에서 숨기기 */
+  .word-scatter { display: none; }
+
+  /* 섹션 타이틀 */
+  .home-section-title { font-size: 0.8rem; }
+  .cv-title { font-size: 0.75rem; }
+  .section-title { font-size: 1rem; }
+
+  /* 제품 그리드 */
   .home-highlights-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .home-nav-grid { grid-template-columns: 1fr; }
-  .word-scatter { height: 250px; }
-  .stats-grid { grid-template-columns: 1fr; gap: 32px; }
   .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .panel-close { right: 5vw; }
+
+  /* Core Value 3등분 → 세로 */
+  .cv-grid { flex-direction: column; gap: 48px; }
+  .cv-line { display: none; }
+  .cv-section { height: auto; padding: 80px 5vw; }
+
+  /* 카드 텍스트 */
+  .card-kw-text { font-size: 1.8rem; }
+  .card-center { gap: 28px; }
+
+  /* 히어로 텍스트 */
+  .hero-text-img { max-width: 60vw; }
+
+  /* 커서 숨기기 (모바일) */
+  #cursor-circle { display: none; }
+  * { cursor: auto !important; }
+
+  /* 푸터 */
   footer { padding: 120px 5vw 40px; }
+  .footer-bottom { position: relative; bottom: auto; left: auto; right: auto; }
+
+  /* 프로세스 */
+  .process-desc { max-width: 100% !important; }
 }
 
 @media (max-width: 480px) {
   .product-grid { grid-template-columns: 1fr; }
   .home-highlights-grid { grid-template-columns: 1fr; }
+  nav { gap: 12px; }
+  nav a { font-size: 0.55rem; }
+  .card-kw-text { font-size: 1.4rem; }
+  .hero-text-img { max-width: 80vw; }
 }
