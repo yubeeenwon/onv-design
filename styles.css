@@ -195,7 +195,7 @@ nav {
 }
 
 nav a {
-  font-size: 0.84rem;
+  font-size: clamp(0.7rem, 1.2vw, 0.84rem);
   font-weight: 400;
   letter-spacing: -0.05em;
   text-transform: uppercase;
@@ -230,6 +230,7 @@ nav a:hover {
 .page-base {
   position: relative;
   z-index: 1;
+  overflow-x: hidden;
 }
 
 .page-panel {
@@ -669,6 +670,7 @@ nav a:hover {
   display: flex;
   align-items: flex-start;
   width: 100%;
+  overflow: hidden;
 }
 
 .cv-col {
@@ -2150,14 +2152,23 @@ footer {
   .product-grid { grid-template-columns: repeat(2, 1fr); }
   .home-highlights-grid { grid-template-columns: repeat(2, 1fr); }
   .word-scatter { height: 450px; }
+  
+  /* 마진 통일 */
+  .cv-section { padding: 0 5vw; }
+  .home-section { padding-left: 5vw; padding-right: 5vw; }
+  .home-sticky-values { padding: 0 5vw; }
+  
+  /* 헤더 마진 통일 */
+  header { padding-left: 5vw; padding-right: 5vw; }
 }
 
 @media (max-width: 768px) {
   /* 헤더 */
-  header { padding: 16px 5vw; }
-  nav { gap: 16px; }
-  nav a { font-size: 0.6rem; }
+  header { padding: 28px 5vw; align-items: flex-start; }
+  nav { flex-direction: column; gap: 14px; align-items: flex-end; }
+  nav a { font-size: 0.75rem; }
   .logo img { height: 22px; }
+  .logo { margin-top: 2px; }
 
   /* 워드클라우드: 작은 화면에서 숨기기 */
   .word-scatter { display: none; }
@@ -2174,7 +2185,10 @@ footer {
   /* Core Value 3등분 → 세로 */
   .cv-grid { flex-direction: column; gap: 48px; }
   .cv-line { display: none; }
-  .cv-section { height: auto; padding: 80px 5vw; }
+  .cv-section { height: auto; padding: 80px 5vw; overflow: hidden; }
+  .cv-col { padding: 0; }
+  .cv-keyword-img { max-width: 80vw !important; height: auto !important; }
+  .sticky-value-img-large { max-width: 80vw !important; height: auto !important; }
 
   /* 카드 텍스트 */
   .card-kw-text { font-size: 1.8rem; }
@@ -2193,13 +2207,23 @@ footer {
 
   /* 프로세스 */
   .process-desc { max-width: 100% !important; }
+
+  /* 전체 오버플로우 방지 */
+  .home-section { overflow: hidden; }
+  .home-intro { overflow: hidden; }
+  footer { overflow: hidden; }
+  
+  /* 히어로 텍스트 이미지 */
+  .hero-text-img { max-width: 55vw; }
+  .card-text-img { max-width: 55vw; }
 }
 
 @media (max-width: 480px) {
   .product-grid { grid-template-columns: 1fr; }
   .home-highlights-grid { grid-template-columns: 1fr; }
   nav { gap: 12px; }
-  nav a { font-size: 0.55rem; }
+  nav a { font-size: 0.7rem; }
   .card-kw-text { font-size: 1.4rem; }
-  .hero-text-img { max-width: 80vw; }
+  .hero-text-img { max-width: 70vw; }
+  .cv-keyword-img { max-width: 70vw !important; }
 }
