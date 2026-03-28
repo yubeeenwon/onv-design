@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadTl.call(() => {
       mainHeader.classList.remove('header-hidden');
       mainHeader.classList.add('header-visible');
+      ScrollTrigger.refresh();
     }, [], '-=0.2');
   }
   const overlay = document.getElementById('page-overlay');
@@ -253,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!isLocked) {
               isLocked = true;
               goToSlide(currentSlide + (e.deltaY > 0 ? 1 : -1));
-              setTimeout(() => { isLocked = false; }, 800);
+              setTimeout(() => { isLocked = false; }, 1600);
             }
           }
         }
@@ -576,6 +577,33 @@ document.addEventListener('DOMContentLoaded', () => {
       if (cursorCircle) cursorCircle.classList.remove('hover-grow');
     });
   });
+
+  // ===== BRAND SPOTLIGHT =====
+  const brandHeroText = document.querySelector('.brand-hero-text');
+  const brandBody = document.querySelector('.brand-hero-text .brand-body');
+  let spotlightTimer = null;
+  
+  if (brandHeroText && brandBody) {
+    // 패널 열릴 때 1초 후 spotlight 활성화
+    document.addEventListener('click', (e) => {
+      const navEl = e.target.closest('[data-nav="brand"]');
+      if (navEl) {
+        brandBody.classList.remove('spotlight-ready');
+        clearTimeout(spotlightTimer);
+        spotlightTimer = setTimeout(() => {
+          brandBody.classList.add('spotlight-ready');
+        }, 1500);
+      }
+    });
+
+    brandHeroText.addEventListener('mousemove', (e) => {
+      const rect = brandHeroText.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      brandBody.style.setProperty('--mx', x + '%');
+      brandBody.style.setProperty('--my', y + '%');
+    });
+  }
 
   // ===== KEYBOARD =====
   document.addEventListener('keydown', (e) => {
