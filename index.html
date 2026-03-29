@@ -36,29 +36,29 @@
   <div id="home" class="page-base">
 
     <!-- HERO: 풀스크린 이미지 → 스크롤 시 카드로 축소 -->
-    <div id="hero-pin" style="height: 550vh;">
+    <!-- HERO: 3-phase scroll sequence -->
+    <div id="hero-pin" style="height: 600vh;">
       <div id="hero-sticky">
-        <div id="hero-image-wrap">
-          <img src="img_shop/main.png" alt="ONV Signature" id="hero-image">
-          <div id="hero-overlay"></div>
 
-          <!-- 카드 텍스트: METAL / CIRCULATION 가운데 -->
-          <div id="card-content">
-            <div class="card-center">
-              <span class="card-kw-text">Sustainability</span>
-              <span class="card-kw-text">Metal</span>
-              <span class="card-kw-text">Circulation</span>
-            </div>
-            <div class="hero-float-img" id="metalFloat">
-              <img src="float_metal.png" alt="">
-            </div>
-            <div class="hero-float-img" id="circFloat">
-              <img src="float_circulation.png" alt="">
-            </div>
+        <!-- PHASE 1: 풀스크린 이미지 -->
+        <div id="phase1" class="hero-phase">
+          <div id="hero-image-wrap">
+            <img src="img_shop/main.png" alt="ONV Signature" id="hero-image">
+            <div id="hero-overlay"></div>
           </div>
+          <img src="img_source/text_01.png" alt="" class="hero-text-img hero-text-tl" style="filter: invert(1) brightness(5) grayscale(100%);">
+          <img src="img_source/text_02.png" alt="" class="hero-text-img hero-text-br" style="filter: invert(1) brightness(5) grayscale(100%);">
         </div>
-        <!-- 3D CARD + KEYWORDS (andlab style) -->
-        <div id="hero-3d-box">
+
+        <!-- PHASE 2: 키워드 텍스트 -->
+        <div id="phase2" class="hero-phase">
+          <span class="phase2-kw">Sustainability</span>
+          <span class="phase2-kw">Metal</span>
+          <span class="phase2-kw">Circulation</span>
+        </div>
+
+        <!-- PHASE 3: 3D 카드 + 키워드 그리드 -->
+        <div id="phase3" class="hero-phase">
           <div class="card-3d-layout">
             <div class="card-3d-left">
               <h3 class="card-3d-title">ONV</h3>
@@ -83,11 +83,6 @@
           </div>
         </div>
 
-        <!-- 히어로 텍스트: 풀스크린일 때만 보임 -->
-        <div id="hero-content">
-          <img src="img_source/text_01.png" alt="Recycled Metal Only Adds Depth" class="hero-text-img hero-text-tl" style="filter: invert(1) brightness(5) grayscale(100%);">
-          <img src="img_source/text_02.png" alt="To Your Space Into Furniture" class="hero-text-img hero-text-br" style="filter: invert(1) brightness(5) grayscale(100%);">
-        </div>
       </div>
     </div>
 

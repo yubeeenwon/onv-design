@@ -286,9 +286,8 @@ nav a:hover {
   color: #fff;
 }
 
-/* ===== HERO SCROLL ===== */
+/* ===== HERO SCROLL (3-Phase) ===== */
 #hero-pin {
-  height: 250vh;
   position: relative;
 }
 
@@ -297,33 +296,39 @@ nav a:hover {
   top: 0;
   width: 100%;
   height: 100vh;
+  overflow: hidden;
+  background: #202020;
+}
+
+/* All phases: absolute, centered, hidden by default */
+.hero-phase {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   opacity: 0;
-  transition: opacity 0.8s ease 0.3s;
+  pointer-events: none;
 }
 
-#hero-sticky.revealed {
+/* PHASE 1: Image */
+#phase1 {
   opacity: 1;
+  pointer-events: auto;
 }
 
 #hero-image-wrap {
   position: absolute;
   top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 0px;
-  will-change: transform, border-radius;
+  width: 100%; height: 100%;
+  will-change: transform;
 }
 
 #hero-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  will-change: transform;
   filter: grayscale(100%);
 }
 
@@ -331,63 +336,58 @@ nav a:hover {
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.75);
+  background: rgba(0,0,0,0.65);
   pointer-events: none;
-  will-change: opacity;
 }
 
-/* 선적 꾸밈 — 그리드 */
-.hero-lines {
+.hero-text-img {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  pointer-events: none;
+  max-width: clamp(320px, 65vw, 850px);
+  height: auto;
+  opacity: 0.3;
   z-index: 2;
-  background:
-    repeating-linear-gradient(
-      to right,
-      transparent,
-      transparent calc(20% - 0.5px),
-      rgba(255,255,255,0.025) calc(20% - 0.5px),
-      rgba(255,255,255,0.025) calc(20% + 0.5px),
-      transparent calc(20% + 0.5px)
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      transparent,
-      transparent calc(25% - 0.5px),
-      rgba(255,255,255,0.025) calc(25% - 0.5px),
-      rgba(255,255,255,0.025) calc(25% + 0.5px),
-      transparent calc(25% + 0.5px)
-    );
-  -webkit-mask-image: radial-gradient(ellipse at center, transparent 20%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.3) 100%);
-  mask-image: radial-gradient(ellipse at center, transparent 20%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.3) 100%);
 }
 
-.hl-line-left, .hl-line-right, .hl-line-bottom { display: none; }
-
-/* ===== 3D CUBE ===== */
-#hero-3d-box {
-  position: absolute;
-  z-index: 7;
-  perspective: 800px;
-  opacity: 0;
-  pointer-events: none;
-  will-change: opacity;
+.hero-text-tl {
+  top: clamp(80px, 12vh, 160px);
+  left: 5vw;
 }
 
-/* 3D Card Layout (andlab style) */
+.hero-text-br {
+  bottom: clamp(80px, 12vh, 160px);
+  right: 5vw;
+}
+
+/* PHASE 2: Keywords */
+#phase2 {
+  flex-direction: column;
+  gap: 40px;
+}
+
+.phase2-kw {
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  opacity: 0.95;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+/* PHASE 3: 3D Card + Keywords */
+#phase3 {
+  perspective: 1000px;
+}
+
 .card-3d-layout {
   display: flex;
   align-items: flex-start;
-  gap: clamp(24px, 3vw, 48px);
-  perspective: 1000px;
+  gap: clamp(32px, 4vw, 64px);
 }
 
 .card-3d-left {
   width: clamp(180px, 22vw, 300px);
   flex-shrink: 0;
-  transform: rotateY(8deg);
+  transform: rotateY(-18deg) rotateX(-5deg);
   transform-style: preserve-3d;
 }
 
@@ -405,6 +405,18 @@ nav a:hover {
   overflow: hidden;
   margin-bottom: 16px;
   background: #2a2a2a;
+  position: relative;
+}
+
+/* 3D 옆면 (두께) */
+.card-3d-img::after {
+  content: '';
+  position: absolute;
+  top: 0; right: -8px;
+  width: 8px; height: 100%;
+  background: #333;
+  transform: rotateY(90deg);
+  transform-origin: left center;
 }
 
 .card-3d-img img {
@@ -426,7 +438,7 @@ nav a:hover {
 .card-3d-keywords {
   font-size: clamp(0.6rem, 1vw, 0.8rem);
   font-weight: 400;
-  line-height: 2.2;
+  line-height: 2.4;
   opacity: 0.5;
   text-transform: uppercase;
   letter-spacing: -0.03em;
@@ -434,159 +446,8 @@ nav a:hover {
 }
 
 .card-3d-keywords span {
-  margin-right: 1.2em;
+  margin-right: 1.5em;
   white-space: nowrap;
-}
-
-#hero-content {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 5;
-  will-change: opacity;
-}
-
-.hero-text-img {
-  position: absolute;
-  max-width: clamp(320px, 65vw, 850px);
-  height: auto;
-  opacity: 0.39;
-}
-
-.hero-text-tl {
-  top: clamp(80px, 12vh, 160px);
-  left: 5vw;
-}
-
-.hero-text-br {
-  bottom: clamp(80px, 12vh, 160px);
-  right: 5vw;
-}
-
-#card-content {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 6;
-  opacity: 0;
-  will-change: opacity;
-  pointer-events: none;
-}
-
-.card-kw-text {
-  font-size: clamp(2rem, 6vw, 4.5rem);
-  font-weight: 400;
-  text-transform: uppercase;
-  opacity: 0.95;
-  line-height: 1;
-}
-
-.card-kw-img {
-  width: clamp(120px, 35vw, 400px);
-  height: auto;
-  object-fit: contain;
-  opacity: 1.00;
-}
-
-
-
-.card-center {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  z-index: 5;
-}
-
-.card-text-img {
-  position: absolute;
-  max-width: clamp(320px, 65vw, 850px);
-  height: auto;
-  opacity: 0;
-}
-
-.card-text-tl {
-  top: clamp(16px, 3vw, 36px);
-  left: clamp(16px, 3vw, 36px);
-}
-
-.card-text-br {
-  bottom: clamp(16px, 3vw, 36px);
-  right: clamp(16px, 3vw, 36px);
-}
-
-.home-logo {
-  width: clamp(180px, 25vw, 320px);
-  margin-bottom: 40px;
-  filter: invert(1);
-  animation: logoFadeIn 2s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
-  opacity: 0;
-}
-
-@keyframes logoFadeIn {
-  from { opacity: 0; transform: translateY(24px) scale(0.97); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.home-tagline {
-  font-size: clamp(0.7rem, 1.2vw, 0.85rem);
-  font-weight: 300;
-  letter-spacing: -0.05em;
-  text-transform: uppercase;
-  opacity: 0;
-  animation: fadeUp 1.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0.4s forwards;
-  color: rgba(255,255,255,0.45);
-}
-
-.home-tagline-kr {
-  font-size: clamp(0.75rem, 1vw, 0.9rem);
-  font-weight: 300;
-  letter-spacing: -0.05em;
-  margin-top: 14px;
-  opacity: 0;
-  animation: fadeUp 1.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0.4s forwards;
-  color: rgba(255,255,255,0.28);
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.scroll-indicator {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  opacity: 0;
-  animation: fadeUp 1.4s ease 1.8s forwards;
-}
-
-.scroll-indicator span {
-  font-size: 0.55rem;
-  font-weight: 300;
-  letter-spacing: -0.05em;
-  text-transform: uppercase;
-  opacity: 0.33;
-}
-
-.scroll-line {
-  width: 1px;
-  height: 36px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.35), transparent);
-  animation: scrollPulse 2.5s ease infinite;
-}
-
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.39; transform: scaleY(1); }
-  50% { opacity: 0.91; transform: scaleY(1.4); }
 }
 
 /* ===== HOME SECTIONS ===== */
@@ -2497,8 +2358,8 @@ footer {
   .sticky-value-img-large { max-width: 80vw !important; height: auto !important; }
 
   /* 카드 텍스트 */
-  .card-kw-text { font-size: 1.8rem; }
-  .card-center { gap: 28px; }
+  
+  
 
   /* 히어로 텍스트 */
   .hero-text-img { max-width: 60vw; }
