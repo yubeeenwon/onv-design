@@ -539,15 +539,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let spotlightTimer = null;
   
   if (brandHeroText && brandBody) {
-    // 패널 열릴 때 0.5초 어두운 텍스트 → 그 다음 spotlight 활성화
+    // 패널 열릴 때 1초 후 spotlight 활성화
     document.addEventListener('click', (e) => {
       const navEl = e.target.closest('[data-nav="brand"]');
       if (navEl) {
-        // 리셋: spotlight 해제, 어두운 상태부터 시작
         brandBody.classList.remove('spotlight-ready');
-        brandBody.style.removeProperty('opacity');
+        brandBody.style.opacity = '';
         clearTimeout(spotlightTimer);
-        // 0.5초 후 spotlight 마스크 활성화
         spotlightTimer = setTimeout(() => {
           brandBody.classList.add('spotlight-ready');
         }, 500);
