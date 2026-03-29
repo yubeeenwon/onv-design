@@ -1574,15 +1574,13 @@ nav a:hover {
 /* ===== CONTACT ===== */
 .contact-hero-img {
   width: 100%;
-  height: clamp(200px, 50vh, 500px);
   overflow: hidden;
 }
 
 .contact-hero-img img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 40%;
+  height: auto;
+  display: block;
   filter: grayscale(100%);
 }
 
