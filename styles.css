@@ -1650,10 +1650,10 @@ nav a:hover {
 }
 
 .map-pin-dot {
-  width: clamp(8px, 1.2vw, 14px);
-  height: clamp(8px, 1.2vw, 14px);
+  width: clamp(16px, 2.4vw, 28px);
+  height: clamp(16px, 2.4vw, 28px);
   border-radius: 50%;
-  background: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.3);
 }
 
 .map-pin-ring {
@@ -1661,16 +1661,16 @@ nav a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: clamp(28px, 4vw, 48px);
-  height: clamp(28px, 4vw, 48px);
+  width: clamp(56px, 8vw, 96px);
+  height: clamp(56px, 8vw, 96px);
   border-radius: 50%;
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 1.5px solid rgba(255,255,255,0.4);
   animation: pinPulse 2.5s ease-out infinite;
 }
 
 @keyframes pinPulse {
-  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.6; }
-  100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+  0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
 }
 
 .contact-map img {
