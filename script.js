@@ -576,6 +576,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ===== CONTACT HERO FIXED THUMB =====
+  const contactPanel = document.getElementById('contact');
+  const contactHeroImg = document.querySelector('.contact-hero-img');
+
+  if (contactPanel && contactHeroImg) {
+    contactPanel.addEventListener('scroll', () => {
+      const scrollTop = contactPanel.scrollTop;
+      if (scrollTop > 200) {
+        contactHeroImg.classList.add('fixed-thumb');
+      } else {
+        contactHeroImg.classList.remove('fixed-thumb');
+      }
+    }, { passive: true });
+  }
+
   // ===== KEYBOARD =====
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {

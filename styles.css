@@ -1446,11 +1446,25 @@ nav a:hover {
   padding: 0;
   overflow: hidden;
   height: clamp(220px, 40vw, 500px);
+  transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.contact-hero-img.fixed-thumb {
+  position: fixed;
+  bottom: 5vw;
+  right: 5vw;
+  top: auto;
+  left: auto;
+  width: clamp(280px, 30vw, 420px);
+  height: auto;
+  aspect-ratio: 16 / 10;
+  z-index: 50;
+  border-radius: 4px;
 }
 
 .contact-hero-img img {
   width: 100%;
-  min-width: 600px;
+  min-width: 0;
   height: 100%;
   object-fit: cover;
   object-position: 30% center;
