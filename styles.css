@@ -1574,7 +1574,7 @@ nav a:hover {
 /* ===== CONTACT ===== */
 .contact-hero-img {
   width: 100%;
-  padding: 0 5vw;
+  padding: 0;
   overflow: hidden;
   height: clamp(220px, 40vw, 500px);
 }
