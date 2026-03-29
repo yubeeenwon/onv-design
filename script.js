@@ -165,17 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Phase 2 (25~40%): 키워드 등장
   heroTl.to('.hero-keywords-overlay', { opacity: 1, duration: 0.08 }, 0.27);
 
-  // Phase 2→3 전환: flat 사라지고 building 등장
-  heroTl.to('#hero-flat', { opacity: 0, duration: 0.06 }, 0.42);
-  heroTl.to('.building-scene', { opacity: 1, duration: 0.06 }, 0.44);
-
-  // Phase 3 (44~100%): building-container rotateY 30 → -30 (참고 HTML과 동일)
-  heroTl.to('.building-container', {
-    rotateY: -30,
-    rotateX: -3,
-    duration: 0.54,
-    ease: 'none',
-  }, 0.44);
 
   // ===== CORE VALUE 가로 스크롤 (Brand 페이지) =====
   const coreWrap = document.getElementById('coreValueWrap');
