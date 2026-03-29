@@ -40,45 +40,47 @@
     <div id="hero-pin" style="height: 700vh;">
       <div id="hero-sticky">
 
-        <div class="card-scene">
-          <div class="card-3d-inner">
-
-            <!-- FRONT FACE -->
-            <div class="card-front">
-              <div class="front-image">
-                <img src="img_shop/main.png" alt="ONV Signature" id="hero-image">
-                <div id="hero-overlay"></div>
-              </div>
-              <img src="img_source/text_01.png" alt="" class="hero-text-img hero-text-tl" style="filter: invert(1) brightness(5) grayscale(100%);">
-              <img src="img_source/text_02.png" alt="" class="hero-text-img hero-text-br" style="filter: invert(1) brightness(5) grayscale(100%);">
-              <div class="front-keywords">
-                <span class="phase2-kw">Sustainability</span>
-                <span class="phase2-kw">Metal</span>
-                <span class="phase2-kw">Circulation</span>
-              </div>
-            </div>
-
-            <!-- RIGHT FACE -->
-            <div class="card-right">
-              <p>Recycled Metal<br>Into Furniture</p>
-            </div>
-
+        <!-- Phase 1~2: 이미지 + 키워드 (3D 전) -->
+        <div id="hero-flat">
+          <div class="hero-image-layer">
+            <img src="img_shop/main.png" alt="ONV Signature" id="hero-image">
+            <div id="hero-overlay"></div>
+          </div>
+          <img src="img_source/text_01.png" alt="" class="hero-text-img hero-text-tl" style="filter: invert(1) brightness(5) grayscale(100%);">
+          <img src="img_source/text_02.png" alt="" class="hero-text-img hero-text-br" style="filter: invert(1) brightness(5) grayscale(100%);">
+          <div class="hero-keywords-overlay">
+            <span class="phase2-kw">Sustainability</span>
+            <span class="phase2-kw">Metal</span>
+            <span class="phase2-kw">Circulation</span>
           </div>
         </div>
 
-        <!-- 키워드 그리드 -->
-        <div id="phase3-keywords">
-          <span>Recycled Metal</span> <span>ONV</span> <span>Expertise</span><br>
-          <span>Founded in Seoul</span> <span>Sustainability</span><br>
-          <span>Design Team</span> <span>Creative</span> <span>Planning</span><br>
-          <span>High Quality</span> <span>2025</span> <span>Outcomes</span><br>
-          <span>Every Stage</span> <span>Process</span><br>
-          <span>Collaboration</span> <span>Production</span><br>
-          <span>Manufacturing</span> <span>Research</span> <span>Value</span><br>
-          <span>Environment</span> <span>Connection</span> <span>Metal</span><br>
-          <span>From Concept</span> <span>To Launch</span><br>
-          <span>Material</span> <span>Functionality</span><br>
-          <span>Upcycling</span> <span>Circulation</span> <span>Depth</span>
+        <!-- Phase 3: 2컬럼 3D (andlab style) -->
+        <div class="building-scene">
+          <div class="building-container">
+            <div class="building-img">
+              <img src="img_shop/main.png" alt="ONV">
+              <div class="building-img-overlay"></div>
+              <div class="building-img-text">
+                <span>Sustainability</span>
+                <span>Metal</span>
+                <span>Circulation</span>
+              </div>
+            </div>
+            <div class="copy-building">
+              <div class="cb-line"><span class="cb-item">Recycled Metal</span> <span class="cb-item">ONV</span> <span class="cb-item">Expertise</span></div>
+              <div class="cb-line"><span class="cb-item">Founded in Seoul</span> <span class="cb-item">Sustainability</span></div>
+              <div class="cb-line"><span class="cb-item">Design Team</span> <span class="cb-item">Creative</span> <span class="cb-item">Planning</span></div>
+              <div class="cb-line"><span class="cb-item">High Quality</span> <span class="cb-item">2025</span> <span class="cb-item">Outcomes</span></div>
+              <div class="cb-line"><span class="cb-item">Every Stage</span> <span class="cb-item">Process</span></div>
+              <div class="cb-line"><span class="cb-item">Collaboration</span> <span class="cb-item">Production</span></div>
+              <div class="cb-line"><span class="cb-item">Manufacturing</span> <span class="cb-item">Research</span> <span class="cb-item">Value</span></div>
+              <div class="cb-line"><span class="cb-item">Environment</span> <span class="cb-item">Connection</span> <span class="cb-item">Metal</span></div>
+              <div class="cb-line"><span class="cb-item">From Concept</span> <span class="cb-item">To Launch</span></div>
+              <div class="cb-line"><span class="cb-item">Material</span> <span class="cb-item">Functionality</span></div>
+              <div class="cb-line"><span class="cb-item">Upcycling</span> <span class="cb-item">Circulation</span> <span class="cb-item">Depth</span></div>
+            </div>
+          </div>
         </div>
 
       </div>

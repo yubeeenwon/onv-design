@@ -143,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
   observeFadeIns();
 
   // ===== GSAP HERO SCROLL (3-Phase) =====
-  // 회전: .card-3d-inner 하나만. 다른 요소에 rotateY 절대 금지.
   gsap.registerPlugin(ScrollTrigger);
 
   const tl = gsap.timeline({
@@ -159,16 +158,24 @@ document.addEventListener('DOMContentLoaded', () => {
   // Phase 1 (0~25%): 텍스트 사라짐 + 이미지 축소
   tl.to('.hero-text-tl', { x: -200, opacity: 0, duration: 0.1 }, 0.05);
   tl.to('.hero-text-br', { x: 200, opacity: 0, duration: 0.1 }, 0.08);
-  tl.to('.front-image', { scale: 0.5, duration: 0.18 }, 0.08);
+  tl.to('.hero-image-layer', { scale: 0.5, duration: 0.18 }, 0.08);
   tl.to('#hero-overlay', { opacity: 0.3, duration: 0.18 }, 0.08);
   tl.to('#hero-image', { filter: 'grayscale(0%)', duration: 0.18 }, 0.08);
 
-  // Phase 2 (25~45%): 키워드 등장 (front-keywords opacity만)
-  tl.to('.front-keywords', { opacity: 1, duration: 0.08 }, 0.27);
+  // Phase 2 (25~40%): 키워드 등장
+  tl.to('.hero-keywords-overlay', { opacity: 1, duration: 0.08 }, 0.27);
 
-  // Phase 3 (45~100%): .card-3d-inner 통째로 rotateY
-  tl.to('.card-3d-inner', { rotateY: -40, duration: 0.5, ease: 'power1.inOut' }, 0.48);
-  tl.to('#phase3-keywords', { opacity: 0.5, duration: 0.15 }, 0.55);
+  // Phase 2→3 전환 (40~50%): flat 사라지고 building 등장
+  tl.to('#hero-flat', { opacity: 0, duration: 0.08 }, 0.42);
+  tl.to('.building-scene', { opacity: 1, duration: 0.08 }, 0.45);
+
+  // Phase 3 (45~100%): .building-container만 rotateY 30→-30
+  tl.to('.building-container', {
+    rotateY: -30,
+    rotateX: -3,
+    duration: 0.5,
+    ease: 'none',
+  }, 0.48);
 
   // ===== CORE VALUE 가로 스크롤 (Brand 페이지) =====
   const coreWrap = document.getElementById('coreValueWrap');
