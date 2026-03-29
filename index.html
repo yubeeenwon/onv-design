@@ -37,50 +37,49 @@
 
     <!-- HERO: 풀스크린 이미지 → 스크롤 시 카드로 축소 -->
     <!-- HERO: 3-phase scroll sequence -->
-    <div id="hero-pin" style="height: 600vh;">
+    <div id="hero-pin" style="height: 700vh;">
       <div id="hero-sticky">
 
-        <!-- PHASE 1: 풀스크린 이미지 -->
-        <div id="phase1" class="hero-phase">
-          <div id="hero-image-wrap">
-            <img src="img_shop/main.png" alt="ONV Signature" id="hero-image">
-            <div id="hero-overlay"></div>
-          </div>
-          <img src="img_source/text_01.png" alt="" class="hero-text-img hero-text-tl" style="filter: invert(1) brightness(5) grayscale(100%);">
-          <img src="img_source/text_02.png" alt="" class="hero-text-img hero-text-br" style="filter: invert(1) brightness(5) grayscale(100%);">
-        </div>
+        <!-- 3D WRAP: Phase 2~3에서 전체가 3D 박스로 전환 -->
+        <div id="card-3d-wrap">
+          <div id="card-3d-inner">
 
-        <!-- PHASE 2: 키워드 텍스트 -->
-        <div id="phase2" class="hero-phase">
-          <span class="phase2-kw">Sustainability</span>
-          <span class="phase2-kw">Metal</span>
-          <span class="phase2-kw">Circulation</span>
-        </div>
-
-        <!-- PHASE 3: 3D 카드 + 키워드 그리드 -->
-        <div id="phase3" class="hero-phase">
-          <div class="card-3d-wrap">
-            <div class="card-3d-inner">
-              <div class="card-front">
-                <span class="card-front-title">Recycled Metal</span>
-                <span class="card-front-sub">Into Furniture</span>
+            <!-- FRONT FACE: 이미지 + 키워드 -->
+            <div id="card-face-front">
+              <div id="hero-image-wrap">
+                <img src="img_shop/main.png" alt="ONV Signature" id="hero-image">
+                <div id="hero-overlay"></div>
               </div>
-              <div class="card-right"></div>
+              <img src="img_source/text_01.png" alt="" class="hero-text-img hero-text-tl" style="filter: invert(1) brightness(5) grayscale(100%);">
+              <img src="img_source/text_02.png" alt="" class="hero-text-img hero-text-br" style="filter: invert(1) brightness(5) grayscale(100%);">
+              <div id="phase2-overlay">
+                <span class="phase2-kw">Sustainability</span>
+                <span class="phase2-kw">Metal</span>
+                <span class="phase2-kw">Circulation</span>
+              </div>
             </div>
+
+            <!-- RIGHT FACE -->
+            <div id="card-face-right">
+              <p class="right-face-text">ONV proposes a sustainable furniture collection that bridges the gap between recycled materials and metallic aesthetics.</p>
+            </div>
+
           </div>
-          <div class="card-3d-keywords">
-            <span>Recycled Metal</span> <span>ONV</span> <span>Expertise</span><br>
-            <span>Founded in Seoul</span> <span>Sustainability</span><br>
-            <span>Design Team</span> <span>Creative</span> <span>Planning</span><br>
-            <span>High Quality</span> <span>2025</span> <span>Outcomes</span><br>
-            <span>Every Stage</span> <span>Process</span><br>
-            <span>Collaboration</span> <span>Production</span><br>
-            <span>Manufacturing</span> <span>Research</span> <span>Value</span><br>
-            <span>Environment</span> <span>Connection</span> <span>Metal</span><br>
-            <span>From Concept</span> <span>To Launch</span><br>
-            <span>Material</span> <span>Functionality</span><br>
-            <span>Upcycling</span> <span>Circulation</span> <span>Depth</span>
-          </div>
+        </div>
+
+        <!-- 키워드 그리드 (Phase 3에서 옆에 등장) -->
+        <div id="phase3-keywords">
+          <span>Recycled Metal</span> <span>ONV</span> <span>Expertise</span><br>
+          <span>Founded in Seoul</span> <span>Sustainability</span><br>
+          <span>Design Team</span> <span>Creative</span> <span>Planning</span><br>
+          <span>High Quality</span> <span>2025</span> <span>Outcomes</span><br>
+          <span>Every Stage</span> <span>Process</span><br>
+          <span>Collaboration</span> <span>Production</span><br>
+          <span>Manufacturing</span> <span>Research</span> <span>Value</span><br>
+          <span>Environment</span> <span>Connection</span> <span>Metal</span><br>
+          <span>From Concept</span> <span>To Launch</span><br>
+          <span>Material</span> <span>Functionality</span><br>
+          <span>Upcycling</span> <span>Circulation</span> <span>Depth</span>
         </div>
 
       </div>

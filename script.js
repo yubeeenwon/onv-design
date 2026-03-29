@@ -145,55 +145,39 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===== GSAP HERO SCROLL (3-Phase) =====
   gsap.registerPlugin(ScrollTrigger);
 
-  const phase1 = document.getElementById('phase1');
-  const phase2 = document.getElementById('phase2');
-  const phase3 = document.getElementById('phase3');
+  const cardInner = document.getElementById('card-3d-inner');
   const heroImgWrap = document.getElementById('hero-image-wrap');
+  const phase2Overlay = document.getElementById('phase2-overlay');
+  const phase3Kw = document.getElementById('phase3-keywords');
 
-  if (phase1 && phase2 && phase3 && heroImgWrap) {
+  if (cardInner && heroImgWrap) {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '#hero-pin',
         start: 'top top',
         end: 'bottom bottom',
-        scrub: 1,
+        scrub: 1.2,
         pin: false,
       }
     });
 
-    // === PHASE 1 (0~30%): 이미지 축소 + 텍스트 사라짐 ===
-    // 텍스트 좌우로 사라짐
-    tl.to('.hero-text-tl', { x: -200, opacity: 0, duration: 0.12, ease: 'power2.in' }, 0.05);
-    tl.to('.hero-text-br', { x: 200, opacity: 0, duration: 0.12, ease: 'power2.in' }, 0.1);
-    
-    // 이미지 축소
-    tl.to(heroImgWrap, { scale: 0.5, duration: 0.2, ease: 'none' }, 0.1);
-    tl.to('#hero-overlay', { opacity: 0.3, duration: 0.2, ease: 'none' }, 0.1);
-    tl.to('#hero-image', { filter: 'grayscale(0%)', duration: 0.2, ease: 'none' }, 0.1);
-    
-    // Phase 1 사라짐
-    tl.to(phase1, { opacity: 0, duration: 0.05, ease: 'none' }, 0.28);
+    // === PHASE 1 (0~25%): 풀스크린 이미지 + 텍스트 사라짐 ===
+    tl.to('.hero-text-tl', { x: -200, opacity: 0, duration: 0.1, ease: 'power2.in' }, 0.05);
+    tl.to('.hero-text-br', { x: 200, opacity: 0, duration: 0.1, ease: 'power2.in' }, 0.08);
+    tl.to(heroImgWrap, { scale: 0.5, duration: 0.18, ease: 'none' }, 0.08);
+    tl.to('#hero-overlay', { opacity: 0.3, duration: 0.18, ease: 'none' }, 0.08);
+    tl.to('#hero-image', { filter: 'grayscale(0%)', duration: 0.18, ease: 'none' }, 0.08);
 
-    // === PHASE 2 (30~55%): 키워드 등장 → 사라짐 ===
-    tl.to(phase2, { opacity: 1, pointerEvents: 'auto', duration: 0.08, ease: 'none' }, 0.32);
-    
-    // 키워드 순차 등장
-    tl.from('.phase2-kw', { 
-      y: 40, opacity: 0, stagger: 0.03, duration: 0.08, ease: 'power2.out' 
-    }, 0.33);
-    
-    // Phase 2 사라짐
-    tl.to(phase2, { opacity: 0, pointerEvents: 'none', duration: 0.05, ease: 'none' }, 0.52);
+    // === PHASE 2 (25~45%): 키워드 등장 (이미지 위에) ===
+    tl.to(phase2Overlay, { opacity: 1, duration: 0.08, ease: 'none' }, 0.27);
+    tl.from('.phase2-kw', { y: 40, opacity: 0, stagger: 0.025, duration: 0.06, ease: 'power2.out' }, 0.28);
 
-    // === PHASE 3 (55~100%): 3D 카드 등장 + 회전 ===
-    tl.to(phase3, { opacity: 1, pointerEvents: 'auto', duration: 0.1, ease: 'none' }, 0.57);
+    // === PHASE 3 (45~100%): 3D 회전 + 키워드 그리드 ===
+    // 전체가 3D 박스로 회전
+    tl.to(cardInner, { rotateY: -40, duration: 0.5, ease: 'power1.inOut' }, 0.48);
     
-    // 카드 rotateY: 0 → -35deg (스크롤할수록 오른쪽면 보임)
-    tl.to('.card-3d-inner', {
-      rotateY: -35,
-      duration: 0.4,
-      ease: 'none',
-    }, 0.6);
+    // 3D 회전 시작하면서 키워드 그리드 등장
+    tl.to(phase3Kw, { opacity: 0.5, pointerEvents: 'auto', duration: 0.15, ease: 'none' }, 0.55);
   }
 
   // ===== CORE VALUE 가로 스크롤 (Brand 페이지) =====
