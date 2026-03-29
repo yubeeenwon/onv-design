@@ -548,7 +548,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearTimeout(spotlightTimer);
         spotlightTimer = setTimeout(() => {
           brandBody.classList.add('spotlight-ready');
-        }, 2000);
+        }, 500);
       }
     });
 
