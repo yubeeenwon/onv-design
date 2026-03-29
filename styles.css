@@ -456,7 +456,8 @@ nav a:hover {
   letter-spacing: -0.05em;
   text-transform: uppercase;
   margin-bottom: 40px;
-  opacity: 0.72;
+  opacity: 1;
+  color: #fff;
 }
 
 
@@ -595,7 +596,8 @@ nav a:hover {
   font-weight: 700;
   letter-spacing: -0.05em;
   text-transform: uppercase;
-  opacity: 0.52;
+  opacity: 1;
+  color: #fff;
   margin-bottom: clamp(48px, 6vh, 80px);
 }
 
@@ -1494,7 +1496,8 @@ nav a:hover {
   font-weight: 700;
   letter-spacing: -0.05em;
   text-transform: uppercase;
-  opacity: 0.65;
+  opacity: 1;
+  color: #fff;
   z-index: 10;
   pointer-events: none;
   color: #fff;
@@ -1604,7 +1607,8 @@ nav a:hover {
   font-weight: 700;
   letter-spacing: -0.05em;
   text-transform: uppercase;
-  opacity: 0.5;
+  opacity: 1;
+  color: #fff;
   margin-bottom: clamp(32px, 4vw, 56px);
 }
 
