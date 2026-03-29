@@ -287,6 +287,8 @@ nav a:hover {
 }
 
 /* ===== HERO SCROLL (3-Phase) ===== */
+
+/* Pin container */
 #hero-pin {
   position: relative;
 }
@@ -298,16 +300,17 @@ nav a:hover {
   height: 100vh;
   overflow: hidden;
   background: #202020;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-/* === 3D CARD SYSTEM === */
+/* 
+  3D CARD SYSTEM
+  구조: .card-scene > .card-3d-inner > (.card-front + .card-right)
+  회전: .card-3d-inner 하나만 rotateY 
+*/
 .card-scene {
-  perspective: 1000px;
   width: 100%;
   height: 100%;
+  perspective: 1000px;
 }
 
 .card-3d-inner {
@@ -315,26 +318,23 @@ nav a:hover {
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  transform: rotateY(0deg);
-  will-change: transform;
+  transform: rotateY(0deg); /* GSAP만 이 값을 제어 */
 }
 
-/* FRONT FACE */
+/* --- FRONT FACE --- */
 .card-front {
   position: absolute;
-  inset: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   backface-visibility: hidden;
   background: #202020;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
+  border: none;
   overflow: hidden;
 }
 
+/* 이미지 */
 .front-image {
   position: absolute;
-  inset: 0;
-  will-change: transform;
+  top: 0; left: 0; right: 0; bottom: 0;
 }
 
 .front-image img {
@@ -346,11 +346,12 @@ nav a:hover {
 
 #hero-overlay {
   position: absolute;
-  inset: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0,0,0,0.65);
   pointer-events: none;
 }
 
+/* 텍스트 이미지 (Phase 1) */
 .hero-text-img {
   position: absolute;
   max-width: clamp(320px, 65vw, 850px);
@@ -369,10 +370,10 @@ nav a:hover {
   right: 5vw;
 }
 
-/* 키워드 3개 — front face 안에 정적 배치 */
+/* 키워드 (Phase 2) — front face 안에 정적 배치 */
 .front-keywords {
   position: absolute;
-  inset: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -380,7 +381,7 @@ nav a:hover {
   gap: 40px;
   z-index: 5;
   background: #202020;
-  opacity: 0;
+  opacity: 0; /* GSAP으로 1까지 올림 */
 }
 
 .phase2-kw {
@@ -389,19 +390,18 @@ nav a:hover {
   text-transform: uppercase;
   line-height: 1;
   letter-spacing: -0.05em;
+  /* 개별 transform 절대 없음 */
 }
 
-/* RIGHT FACE */
+/* --- RIGHT FACE --- */
 .card-right {
   position: absolute;
   top: 0;
-  left: 100%;
+  left: 100%; /* front 오른쪽 끝에 위치 */
   width: 80px;
   height: 100%;
   background: #1a1a1a;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
+  border: none;
   backface-visibility: hidden;
   transform: rotateY(90deg);
   transform-origin: left center;
