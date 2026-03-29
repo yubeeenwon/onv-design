@@ -203,12 +203,25 @@ document.addEventListener('DOMContentLoaded', () => {
       ease: 'none',
     }, 0.35);
 
-    // Phase 4 (0.65~0.9): 카드 텍스트 천천히 등장
+    // Phase 4 (0.5~0.65): 카드 텍스트 등장
     tl.to('#card-content', {
       opacity: 1,
-      duration: 0.25,
+      duration: 0.15,
       ease: 'power1.out',
-    }, 0.65);
+    }, 0.5);
+
+    // Phase 5 (0.7~0.85): 카드 텍스트 사라짐 + 3D 박스 등장
+    tl.to('#card-content', {
+      opacity: 0,
+      duration: 0.1,
+      ease: 'none',
+    }, 0.7);
+
+    tl.to('#hero-3d-box', {
+      opacity: 1,
+      duration: 0.15,
+      ease: 'power1.out',
+    }, 0.75);
   }
 
   // ===== CORE VALUE 가로 스크롤 (Brand 페이지) =====

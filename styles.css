@@ -366,6 +366,71 @@ nav a:hover {
 
 .hl-line-left, .hl-line-right, .hl-line-bottom { display: none; }
 
+/* ===== 3D CUBE ===== */
+#hero-3d-box {
+  position: absolute;
+  z-index: 7;
+  perspective: 800px;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.cube {
+  width: clamp(200px, 25vw, 320px);
+  height: clamp(200px, 25vw, 320px);
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(-15deg) rotateY(25deg);
+  animation: cubeFloat 6s ease-in-out infinite;
+}
+
+@keyframes cubeFloat {
+  0%, 100% { transform: rotateX(-15deg) rotateY(25deg); }
+  50% { transform: rotateX(-18deg) rotateY(30deg) translateY(-8px); }
+}
+
+.cube-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(32,32,32,0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.cube-face span:first-child {
+  font-size: clamp(0.9rem, 1.8vw, 1.3rem);
+  font-weight: 400;
+  opacity: 0.8;
+  letter-spacing: -0.05em;
+}
+
+.cube-face span:last-child {
+  font-size: clamp(0.6rem, 1vw, 0.8rem);
+  font-weight: 300;
+  opacity: 0.3;
+  letter-spacing: -0.05em;
+}
+
+.cube-front {
+  transform: translateZ(calc(clamp(200px, 25vw, 320px) / 2));
+}
+
+.cube-right {
+  transform: rotateY(90deg) translateZ(calc(clamp(200px, 25vw, 320px) / 2));
+}
+
+.cube-top {
+  transform: rotateX(90deg) translateZ(calc(clamp(200px, 25vw, 320px) / 2));
+}
+
 #hero-content {
   position: absolute;
   top: 0; left: 0;
