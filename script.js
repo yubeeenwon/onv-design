@@ -185,8 +185,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Phase 2 사라짐
     tl.to(phase2, { opacity: 0, pointerEvents: 'none', duration: 0.05, ease: 'none' }, 0.52);
 
-    // === PHASE 3 (55~100%): 3D 카드 등장 ===
+    // === PHASE 3 (55~100%): 3D 카드 등장 + 회전 ===
     tl.to(phase3, { opacity: 1, pointerEvents: 'auto', duration: 0.1, ease: 'none' }, 0.57);
+    
+    // 카드 rotateY: 0 → -35deg (스크롤할수록 오른쪽면 보임)
+    tl.to('.card-3d-inner', {
+      rotateY: -35,
+      duration: 0.4,
+      ease: 'none',
+    }, 0.6);
   }
 
   // ===== CORE VALUE 가로 스크롤 (Brand 페이지) =====
