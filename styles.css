@@ -316,7 +316,11 @@ nav a:hover {
 #phase1 {
   opacity: 1;
   pointer-events: auto;
+  z-index: 1;
 }
+
+#phase2 { z-index: 2; }
+#phase3 { z-index: 3; }
 
 #hero-image-wrap {
   position: absolute;
