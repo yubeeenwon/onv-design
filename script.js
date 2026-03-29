@@ -222,6 +222,14 @@ document.addEventListener('DOMContentLoaded', () => {
       duration: 0.15,
       ease: 'power1.out',
     }, 0.75);
+
+    // Phase 6 (0.75~1): 큐브 Y축 회전 (정면 → 오른쪽면)
+    tl.to('.cube', {
+      rotateY: 45,
+      rotateX: -5,
+      duration: 0.25,
+      ease: 'none',
+    }, 0.75);
   }
 
   // ===== CORE VALUE 가로 스크롤 (Brand 페이지) =====
