@@ -145,12 +145,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===== GSAP HERO SCROLL (3-Phase) =====
   gsap.registerPlugin(ScrollTrigger);
 
-  const cardInner = document.getElementById('card-3d-inner');
-  const heroImgWrap = document.getElementById('hero-image-wrap');
-  const phase2Overlay = document.getElementById('phase2-overlay');
+  const frontImage = document.querySelector('.front-image');
+  const frontKeywords = document.querySelector('.front-keywords');
   const phase3Kw = document.getElementById('phase3-keywords');
 
-  if (cardInner && heroImgWrap) {
+  if (frontImage) {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '#hero-pin',
@@ -161,23 +160,27 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // === PHASE 1 (0~25%): 풀스크린 이미지 + 텍스트 사라짐 ===
+    // === PHASE 1 (0~25%): 이미지 축소 + 텍스트 사라짐 ===
     tl.to('.hero-text-tl', { x: -200, opacity: 0, duration: 0.1, ease: 'power2.in' }, 0.05);
     tl.to('.hero-text-br', { x: 200, opacity: 0, duration: 0.1, ease: 'power2.in' }, 0.08);
-    tl.to(heroImgWrap, { scale: 0.5, duration: 0.18, ease: 'none' }, 0.08);
+    tl.to(frontImage, { scale: 0.5, duration: 0.18, ease: 'none' }, 0.08);
     tl.to('#hero-overlay', { opacity: 0.3, duration: 0.18, ease: 'none' }, 0.08);
     tl.to('#hero-image', { filter: 'grayscale(0%)', duration: 0.18, ease: 'none' }, 0.08);
 
-    // === PHASE 2 (25~45%): 키워드 등장 (이미지 위에) ===
-    tl.to(phase2Overlay, { opacity: 1, duration: 0.08, ease: 'none' }, 0.27);
-    tl.from('.phase2-kw', { y: 40, opacity: 0, stagger: 0.025, duration: 0.06, ease: 'power2.out' }, 0.28);
+    // === PHASE 2 (25~45%): 키워드 등장 (front face 안) ===
+    tl.to(frontKeywords, { opacity: 1, duration: 0.08, ease: 'none' }, 0.27);
 
-    // === PHASE 3 (45~100%): 3D 회전 + 키워드 그리드 ===
-    // 전체가 3D 박스로 회전
-    tl.to(cardInner, { rotateY: -40, duration: 0.5, ease: 'power1.inOut' }, 0.48);
-    
-    // 3D 회전 시작하면서 키워드 그리드 등장
-    tl.to(phase3Kw, { opacity: 0.5, pointerEvents: 'auto', duration: 0.15, ease: 'none' }, 0.55);
+    // === PHASE 3 (45~100%): .card-3d-inner 하나만 rotateY ===
+    tl.to('.card-3d-inner', {
+      rotateY: -40,
+      duration: 0.5,
+      ease: 'power1.inOut',
+    }, 0.48);
+
+    // 키워드 그리드 등장
+    if (phase3Kw) {
+      tl.to(phase3Kw, { opacity: 0.5, duration: 0.15, ease: 'none' }, 0.55);
+    }
   }
 
   // ===== CORE VALUE 가로 스크롤 (Brand 페이지) =====
