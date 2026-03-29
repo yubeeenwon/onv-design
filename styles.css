@@ -1575,11 +1575,16 @@ nav a:hover {
 .contact-hero-img {
   width: 100%;
   padding: 0 5vw;
+  overflow: hidden;
+  height: clamp(220px, 40vw, 500px);
 }
 
 .contact-hero-img img {
   width: 100%;
-  height: auto;
+  min-width: 600px;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
   display: block;
   filter: grayscale(100%);
 }
