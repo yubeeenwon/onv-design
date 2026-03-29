@@ -319,6 +319,7 @@ nav a:hover {
   position: relative;
   transform-style: preserve-3d;
   transform: rotateY(0deg); /* GSAP만 이 값을 제어 */
+  transform-origin: center center;
 }
 
 /* --- FRONT FACE --- */
@@ -397,14 +398,14 @@ nav a:hover {
 .card-right {
   position: absolute;
   top: 0;
-  left: 100%; /* front 오른쪽 끝에 위치 */
+  right: 0;
   width: 80px;
   height: 100%;
   background: #1a1a1a;
   border: none;
   backface-visibility: hidden;
   transform: rotateY(90deg);
-  transform-origin: left center;
+  transform-origin: right center;
   display: flex;
   align-items: center;
   justify-content: center;
