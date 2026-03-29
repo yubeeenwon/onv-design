@@ -561,6 +561,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ===== PROCESS PARALLAX =====
+  const processSection = document.querySelector('.bg-process');
+  if (processSection) {
+    const processBg = processSection.querySelector('::before') || processSection;
+    gsap.to('.bg-process::before', {
+      yPercent: -15,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.bg-process',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1,
+      }
+    });
+    // ::before는 GSAP으로 직접 못 움직이니 wrapper로
+  }
+
+  // 실제 구현: bg-process에 data-parallax
+  ScrollTrigger.create({
+    trigger: '.bg-process',
+    start: 'top bottom',
+    end: 'bottom top',
+    scrub: true,
+    onUpdate: (self) => {
+      const el = document.querySelector('.bg-process');
+      if (el) {
+        const yOffset = (self.progress - 0.5) * 30;
+        el.style.setProperty('--parallax-y', yOffset + '%');
+      }
+    }
+  });
+
   // ===== KEYBOARD =====
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
