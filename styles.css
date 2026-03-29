@@ -1772,13 +1772,9 @@ nav a:hover {
   opacity: 0.6;
 }
 
-.map-caption {
-  margin-top: 16px;
-  font-size: 0.7rem;
-  font-weight: 300;
-  opacity: 0.3;
-  font-family: 'Pretendard', sans-serif;
-  letter-spacing: 0;
+.map-address {
+  margin-top: 24px;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
