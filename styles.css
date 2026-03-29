@@ -1584,7 +1584,7 @@ nav a:hover {
   min-width: 600px;
   height: 100%;
   object-fit: cover;
-  object-position: left center;
+  object-position: 30% center;
   display: block;
   filter: grayscale(100%);
 }
