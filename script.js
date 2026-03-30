@@ -473,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (rect.top < viewH && rect.bottom > 0) {
         const progress = (viewH - rect.top) / (viewH + rect.height);
-        const translate = (progress - 0.5) * -80;
+        const translate = (progress - 0.5) * -120;
         workspaceImg.style.transform = `translateY(${translate}px)`;
       }
     }, { passive: true });
