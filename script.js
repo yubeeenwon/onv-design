@@ -576,19 +576,39 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ===== CONTACT HERO FIXED THUMB =====
+  // ===== CONTACT HERO → FIXED THUMB (GSAP) =====
   const contactPanel = document.getElementById('contact');
   const contactHeroImg = document.querySelector('.contact-hero-img');
+  const contactContent = document.querySelector('.contact-content');
 
-  if (contactPanel && contactHeroImg) {
-    contactPanel.addEventListener('scroll', () => {
-      const scrollTop = contactPanel.scrollTop;
-      if (scrollTop > 200) {
-        contactHeroImg.classList.add('fixed-thumb');
-      } else {
+  if (contactPanel && contactHeroImg && contactContent) {
+    let contactST = null;
+
+    function initContactScroll() {
+      if (contactST) contactST.kill();
+
+      contactST = ScrollTrigger.create({
+        scroller: contactPanel,
+        trigger: contactContent,
+        start: 'top 80%',
+        end: 'top 20%',
+        scrub: false,
+        onEnter: () => contactHeroImg.classList.add('fixed-thumb'),
+        onLeaveBack: () => contactHeroImg.classList.remove('fixed-thumb'),
+      });
+    }
+
+    // Contact 패널 열릴 때 ScrollTrigger 초기화
+    document.addEventListener('click', (e) => {
+      const nav = e.target.closest('[data-nav="contact"]');
+      if (nav) {
         contactHeroImg.classList.remove('fixed-thumb');
+        setTimeout(() => {
+          initContactScroll();
+          ScrollTrigger.refresh();
+        }, 1000);
       }
-    }, { passive: true });
+    });
   }
 
   // ===== KEYBOARD =====

@@ -1446,7 +1446,8 @@ nav a:hover {
   padding: 0;
   overflow: hidden;
   height: clamp(220px, 40vw, 500px);
-  transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+  z-index: 1;
 }
 
 .contact-hero-img.fixed-thumb {
