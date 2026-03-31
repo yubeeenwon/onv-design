@@ -584,15 +584,40 @@ document.addEventListener('DOMContentLoaded', () => {
   if (contactPanel && contactHeroImg && contactContent) {
     let contactST = null;
 
+    let contactST2 = null;
+
     function initContactScroll() {
       if (contactST) contactST.kill();
+      if (contactST2) contactST2.kill();
 
+      // Phase 1: 스크롤 → 이미지 줄어듦
       contactST = ScrollTrigger.create({
         scroller: contactPanel,
         trigger: contactContent,
-        start: 'top 80%',
-        onEnter: () => contactHeroImg.classList.add('fixed-thumb'),
-        onLeaveBack: () => contactHeroImg.classList.remove('fixed-thumb'),
+        start: 'top 95%',
+        onEnter: () => {
+          contactHeroImg.classList.add('shrink');
+          contactHeroImg.classList.remove('fixed-thumb');
+        },
+        onLeaveBack: () => {
+          contactHeroImg.classList.remove('shrink');
+          contactHeroImg.classList.remove('fixed-thumb');
+        },
+      });
+
+      // Phase 2: 더 스크롤 → 우측 하단 고정
+      contactST2 = ScrollTrigger.create({
+        scroller: contactPanel,
+        trigger: contactContent,
+        start: 'top 50%',
+        onEnter: () => {
+          contactHeroImg.classList.remove('shrink');
+          contactHeroImg.classList.add('fixed-thumb');
+        },
+        onLeaveBack: () => {
+          contactHeroImg.classList.add('shrink');
+          contactHeroImg.classList.remove('fixed-thumb');
+        },
       });
     }
 
@@ -601,6 +626,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const nav = e.target.closest('[data-nav="contact"]');
       if (nav) {
         contactHeroImg.classList.remove('fixed-thumb');
+        contactHeroImg.classList.remove('shrink');
         setTimeout(() => {
           initContactScroll();
           ScrollTrigger.refresh();
