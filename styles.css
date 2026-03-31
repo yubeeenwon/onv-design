@@ -1427,9 +1427,6 @@ nav a:hover {
   height: clamp(220px, 40vw, 500px);
   z-index: 1;
   border-radius: 0;
-  max-width: 960px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 
@@ -2395,4 +2392,11 @@ footer {
   .card-kw-text { font-size: 1.4rem; }
   .hero-text-img { max-width: 70vw; }
   .cv-keyword-img { max-width: 70vw !important; }
+}
+
+/* Contact panel footer alignment */
+#contact footer {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
