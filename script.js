@@ -590,9 +590,9 @@ document.addEventListener('DOMContentLoaded', () => {
       contactST = ScrollTrigger.create({
         scroller: contactPanel,
         trigger: contactContent,
-        start: 'top 80%',
-        end: 'top 20%',
-        scrub: false,
+        start: 'top 90%',
+        end: 'top 40%',
+        scrub: 1.5,
         onEnter: () => contactHeroImg.classList.add('fixed-thumb'),
         onLeaveBack: () => contactHeroImg.classList.remove('fixed-thumb'),
       });
