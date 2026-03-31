@@ -1430,30 +1430,7 @@ nav a:hover {
   border-radius: 0;
 }
 
-/* Phase 1: 스크롤 → 이미지 줄어듦 */
-.contact-hero-img.shrink {
-  height: clamp(140px, 25vw, 280px);
-  margin: 0 5vw;
-  border-radius: 4px;
-  transition: all 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
-}
 
-/* Phase 2: 더 스크롤 → 우측 하단 고정 */
-.contact-hero-img.fixed-thumb {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  top: auto;
-  left: auto;
-  width: clamp(200px, 22vw, 320px);
-  height: auto;
-  aspect-ratio: 4 / 3;
-  z-index: 150;
-  border-radius: 6px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-  transition: all 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
-  margin: 0;
-}
 
 .contact-hero-img img {
   width: 100%;

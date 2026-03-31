@@ -576,65 +576,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ===== CONTACT HERO → FIXED THUMB (GSAP) =====
-  const contactPanel = document.getElementById('contact');
-  const contactHeroImg = document.querySelector('.contact-hero-img');
-  const contactContent = document.querySelector('.contact-content');
-
-  if (contactPanel && contactHeroImg && contactContent) {
-    let contactST = null;
-
-    let contactST2 = null;
-
-    function initContactScroll() {
-      if (contactST) contactST.kill();
-      if (contactST2) contactST2.kill();
-
-      // Phase 1: 스크롤 → 이미지 줄어듦
-      contactST = ScrollTrigger.create({
-        scroller: contactPanel,
-        trigger: contactContent,
-        start: 'top 95%',
-        onEnter: () => {
-          contactHeroImg.classList.add('shrink');
-          contactHeroImg.classList.remove('fixed-thumb');
-        },
-        onLeaveBack: () => {
-          contactHeroImg.classList.remove('shrink');
-          contactHeroImg.classList.remove('fixed-thumb');
-        },
-      });
-
-      // Phase 2: 더 스크롤 → 우측 하단 고정
-      contactST2 = ScrollTrigger.create({
-        scroller: contactPanel,
-        trigger: contactContent,
-        start: 'top 50%',
-        onEnter: () => {
-          contactHeroImg.classList.remove('shrink');
-          contactHeroImg.classList.add('fixed-thumb');
-        },
-        onLeaveBack: () => {
-          contactHeroImg.classList.add('shrink');
-          contactHeroImg.classList.remove('fixed-thumb');
-        },
-      });
-    }
-
-    // Contact 패널 열릴 때 ScrollTrigger 초기화
-    document.addEventListener('click', (e) => {
-      const nav = e.target.closest('[data-nav="contact"]');
-      if (nav) {
-        contactHeroImg.classList.remove('fixed-thumb');
-        contactHeroImg.classList.remove('shrink');
-        setTimeout(() => {
-          initContactScroll();
-          ScrollTrigger.refresh();
-        }, 1000);
-      }
-    });
-  }
-
   // ===== KEYBOARD =====
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
