@@ -72,6 +72,7 @@ body {
   margin-right: auto;
   padding-left: 5vw;
   padding-right: 5vw;
+  max-width: 1400px;
 }
 
 a {
@@ -375,6 +376,8 @@ nav a:hover {
   margin-top: 40px;
   border-radius: 4px;
   display: block;
+  position: relative;
+  z-index: 1;
 }
 
 .home-process .home-section-title,
@@ -518,6 +521,9 @@ nav a:hover {
   flex-direction: column;
   justify-content: center;
   padding: 0 5vw;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
 }
 
